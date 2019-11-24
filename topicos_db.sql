@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2019 a las 04:33:22
+-- Tiempo de generación: 24-11-2019 a las 20:54:56
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -88,6 +88,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'KaBet', 'carloszaptac17@gmail.com', NULL, '$2y$10$3SXPQ1n7brvrZW0ANf0RZuwf/ZmsBp9BxVCX/vR8Py8gePXxmB/Ve', NULL, '2019-11-24 23:51:26', '2019-11-24 23:51:26');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -136,7 +143,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
