@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2019 a las 20:54:56
+-- Tiempo de generación: 08-12-2019 a las 04:32:32
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -70,6 +70,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('carloszapatac17@gmail.com', '$2y$10$S1aYGGQFneq/0TS.doOyoeNRqb1gciMxLUQn9RWC7IrUHlHNH7/.O', '2019-12-03 01:41:38');
+
 -- --------------------------------------------------------
 
 --
@@ -92,7 +99,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'KaBet', 'carloszaptac17@gmail.com', NULL, '$2y$10$3SXPQ1n7brvrZW0ANf0RZuwf/ZmsBp9BxVCX/vR8Py8gePXxmB/Ve', NULL, '2019-11-24 23:51:26', '2019-11-24 23:51:26');
+(1, 'KaBet', 'carloszapatac17@gmail.com', NULL, '$2y$10$3SXPQ1n7brvrZW0ANf0RZuwf/ZmsBp9BxVCX/vR8Py8gePXxmB/Ve', NULL, '2019-11-24 23:51:26', '2019-11-24 23:51:26');
 
 --
 -- Índices para tablas volcadas
