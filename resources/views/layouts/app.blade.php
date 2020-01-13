@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php use App\User; $users_count = User::all()->count(); ?>
 
 <head>
     <meta charset="utf-8">
@@ -8,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>BIENVENIDOS</title>
+    <title>VueVel</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -41,7 +42,7 @@
                 </ul>
 
                 <!-- SEARCH FORM -->
-                <form class="form-inline ml-3">
+                {{-- <form class="form-inline ml-3">
                     <div class="input-group input-group-sm">
                         <input class="form-control form-control-navbar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -51,10 +52,10 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
 
                 <!-- Right navbar links -->
-                <ul class="navbar-nav ml-auto">
+                {{-- <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -118,9 +119,10 @@
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                         </div>
-                    </li>
+                    </li> --}}
+
                     <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="far fa-bell"></i>
                             <span class="badge badge-warning navbar-badge">15</span>
@@ -145,7 +147,7 @@
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -167,16 +169,16 @@
                             <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">
+                        <a href="{{ route('profile') }}" class="d-block">
                                 @guest
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 @else
                                 {{ Auth::user()->name }}
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                {{-- <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
                                     Cerrar Sesión
-                                </a>
+                                </a> --}}
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
@@ -193,26 +195,56 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
 
-                            <li class="nav-item">
-                                <a href="/" class="{{ Request::path() === '/' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-home"></i>
-                                    <p>Inicio</p>
-                                </a>
-                            </li>
+                            @guest
+                                <li class="nav-item">
+                                    <a href="/" class="{{ Request::path() === '/' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="nav-icon fas fa-home"></i>
+                                        <p>Inicio</p>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="/profile" class="{{ Request::path() === '/profile' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="nav-icon fas fa-user"></i>
+                                        <p>Perfil</p>
+                                    </a>
+                                </li>
+    
+                                <li class="nav-item">
+                                    <a href="usuarios"
+                                        class="{{ Request::path() === 'usuarios' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>Usuarios
+                                            <span class="right badge badge-danger">{{ $users_count ?? '0' }}</span>
+                                        </p>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="usuarios"
-                                    class="{{ Request::path() === 'usuarios' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
-                                    <p>
-                                        Usuarios
-                                        <?php use App\User; $users_count = User::all()->count(); ?>
-                                        <span class="right badge badge-danger">{{ $users_count ?? '0' }}</span>
-                                    </p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="/inmuebles-pers" class="{{ Request::path() === '/inmuebles-pers' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="nav-icon fas fa-building"></i>
+                                        <p>Mis Inmuebles</p>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item has-treeview">
+                                <li class="nav-item">
+                                    <a href="/inmuebles" class="{{ Request::path() === '/inmuebles' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="nav-icon fas fa-hand-holding-usd"></i>
+                                        <p>Todos los Inmuebles</p>
+                                    </a>
+                                </li>
+    
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="nav-icon fas fa-power-off text-red"></i>
+                                        <p>{{ __('Logout') }}</p>
+                                    </a>
+                                </li>
+
+                            @endguest
+
+                            {{-- <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon far fa-sticky-note"></i>
                                     <p>Notas<i class="fas fa-angle-left right"></i></p>
@@ -240,7 +272,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
                         </ul>
                     </nav>
@@ -260,13 +292,15 @@
                 <!-- Main content -->
                 <section class="content">
                     @yield('content')
+                    <vue-progress-bar></vue-progress-bar>
                 </section>
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
                 <!-- NO QUITAR -->
-                <strong>Tutoriales YouTube
+                <strong>Copyright &copy; 2020 Vue-Vel.</strong>
+                    Todos los derechos reservados.
                     <div class="float-right d-none d-sm-inline-block">
                         <b>Version</b> 1.0
                     </div>

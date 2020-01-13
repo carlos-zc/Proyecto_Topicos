@@ -3,6 +3,6 @@
 @section('content')
 
 <div class="container">
-    <profile-component></profile-component>
+    <pers-inmuebles-component></pers-inmuebles-component>
 </div>
 @endsection
