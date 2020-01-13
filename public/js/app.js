@@ -1990,6 +1990,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       ventas: [],
       ubicacion: '',
+<<<<<<< HEAD
+=======
+      nombres: new Array(3),
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
       pagination: {
         'total': 0,
         'current_page': 1,
@@ -2046,11 +2050,40 @@ __webpack_require__.r(__webpack_exports__);
       // axios.get("/users").then(({ data }) => this.users = data.data);
       axios.get('venta/create?page=' + page).then(function (response) {
         _this2.ventas = response.data.ventas.data, _this2.pagination = response.data.pagination;
+<<<<<<< HEAD
+=======
+
+        for (var i = 0; i < _this2.ventas.length; i++) {
+          _this2.nombreVendedor(_this2.ventas[i].user_id, i);
+        }
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
       });
     },
     getFotoGuardada: function getFotoGuardada(img) {
       return "img/inmueble/" + img;
     },
+<<<<<<< HEAD
+=======
+    nombreVendedor: function nombreVendedor(id, index) {
+      var _this3 = this;
+
+      // try {
+      //   var nombre = await axios.get('venta/'+id);
+      //   console.log('listo '+nombre.data)
+      //   return nombre.data;
+      // }
+      // catch(e){
+      //   console.log(e)
+      // }
+      axios.get('venta/' + id).then(function (response) {
+        var nombre = response.data;
+        console.log(nombre);
+        _this3.nombres[index] = nombre;
+      })["catch"](function () {
+        Swal.fire('Error', 'Algo ha salido mal...', 'warning');
+      });
+    },
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
     changePage: function changePage(page) {
       this.pagination.current_page = page;
       this.loadVentas(page);
@@ -2060,12 +2093,20 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+<<<<<<< HEAD
     var _this3 = this;
+=======
+    var _this4 = this;
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
 
     var page = this.pagination.current_page;
     this.loadVentas(page);
     Fire.$on('AfterCreate', function () {
+<<<<<<< HEAD
       _this3.loadVentas(page);
+=======
+      _this4.loadVentas(page);
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
     });
   }
 });
@@ -2330,6 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.pagination.to) {
         return [];
       }
+<<<<<<< HEAD
 
       var from = this.pagination.current_page - this.offset;
 
@@ -2373,6 +2415,51 @@ __webpack_require__.r(__webpack_exports__);
       this.venta.put('venta/' + this.venta.id).then(function () {
         _this2.$Progress.finish();
 
+=======
+
+      var from = this.pagination.current_page - this.offset;
+
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
+
+      var pagesArray = [];
+
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+
+      return pagesArray;
+    },
+    searchVentas: function searchVentas() {
+      var _this = this;
+
+      return this.ventas.filter(function (item) {
+        return item.municipio.toLowerCase().includes(_this.ubicacion.toLowerCase());
+      });
+    }
+  },
+  methods: {
+    newVenta: function newVenta() {
+      this.venta.post('venta');
+      Fire.$emit('AfterCreate');
+      $('#addVenta').modal('hide');
+    },
+    editVenta: function editVenta() {
+      var _this2 = this;
+
+      this.$Progress.start();
+      this.venta.put('venta/' + this.venta.id).then(function () {
+        _this2.$Progress.finish();
+
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
         Fire.$emit('AfterCreate');
       })["catch"](function () {
         _this2.$Progress.fail();
@@ -2650,6 +2737,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updatePerfil: function updatePerfil(e) {
       var _this = this;
+<<<<<<< HEAD
 
       if (this.perfil.clave === this.perfil.clave_confirm) {
         this.modoEditar = false;
@@ -2964,6 +3052,674 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
+
+/*!
+  * Bootstrap v4.4.1 (https://getbootstrap.com/)
+  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  */
+(function (global, factory) {
+   true ? factory(exports, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")) :
+  undefined;
+}(this, (function (exports, $, Popper) { 'use strict';
+
+  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.4.1): util.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+  /**
+   * ------------------------------------------------------------------------
+   * Private TransitionEnd Helpers
+   * ------------------------------------------------------------------------
+   */
+
+  var TRANSITION_END = 'transitionend';
+  var MAX_UID = 1000000;
+  var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+
+  function toType(obj) {
+    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
+  }
+
+  function getSpecialTransitionEndEvent() {
+    return {
+      bindType: TRANSITION_END,
+      delegateType: TRANSITION_END,
+      handle: function handle(event) {
+        if ($(event.target).is(this)) {
+          return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
+        }
+
+        return undefined; // eslint-disable-line no-undefined
+      }
+    };
+  }
+
+  function transitionEndEmulator(duration) {
+    var _this = this;
+
+    var called = false;
+    $(this).one(Util.TRANSITION_END, function () {
+      called = true;
+    });
+    setTimeout(function () {
+      if (!called) {
+        Util.triggerTransitionEnd(_this);
+      }
+    }, duration);
+    return this;
+  }
+
+  function setTransitionEndSupport() {
+    $.fn.emulateTransitionEnd = transitionEndEmulator;
+    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+  }
+  /**
+   * --------------------------------------------------------------------------
+   * Public Util Api
+   * --------------------------------------------------------------------------
+   */
+
+
+  var Util = {
+    TRANSITION_END: 'bsTransitionEnd',
+    getUID: function getUID(prefix) {
+      do {
+        // eslint-disable-next-line no-bitwise
+        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+      } while (document.getElementById(prefix));
+
+      return prefix;
+    },
+    getSelectorFromElement: function getSelectorFromElement(element) {
+      var selector = element.getAttribute('data-target');
+
+      if (!selector || selector === '#') {
+        var hrefAttr = element.getAttribute('href');
+        selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      }
+
+      try {
+        return document.querySelector(selector) ? selector : null;
+      } catch (err) {
+        return null;
+      }
+    },
+    getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
+      if (!element) {
+        return 0;
+      } // Get transition-duration of the element
+
+
+      var transitionDuration = $(element).css('transition-duration');
+      var transitionDelay = $(element).css('transition-delay');
+      var floatTransitionDuration = parseFloat(transitionDuration);
+      var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+
+      if (!floatTransitionDuration && !floatTransitionDelay) {
+        return 0;
+      } // If multiple durations are defined, take the first
+
+
+      transitionDuration = transitionDuration.split(',')[0];
+      transitionDelay = transitionDelay.split(',')[0];
+      return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+    },
+    reflow: function reflow(element) {
+      return element.offsetHeight;
+    },
+    triggerTransitionEnd: function triggerTransitionEnd(element) {
+      $(element).trigger(TRANSITION_END);
+    },
+    // TODO: Remove in v5
+    supportsTransitionEnd: function supportsTransitionEnd() {
+      return Boolean(TRANSITION_END);
+    },
+    isElement: function isElement(obj) {
+      return (obj[0] || obj).nodeType;
+    },
+    typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
+      for (var property in configTypes) {
+        if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
+          var expectedTypes = configTypes[property];
+          var value = config[property];
+          var valueType = value && Util.isElement(value) ? 'element' : toType(value);
+
+          if (!new RegExp(expectedTypes).test(valueType)) {
+            throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
+          }
+        }
+      }
+    },
+    findShadowRoot: function findShadowRoot(element) {
+      if (!document.documentElement.attachShadow) {
+        return null;
+      } // Can find the shadow root otherwise it'll return the document
+
+
+      if (typeof element.getRootNode === 'function') {
+        var root = element.getRootNode();
+        return root instanceof ShadowRoot ? root : null;
+      }
+
+      if (element instanceof ShadowRoot) {
+        return element;
+      } // when we don't find a shadow root
+
+
+      if (!element.parentNode) {
+        return null;
+      }
+
+      return Util.findShadowRoot(element.parentNode);
+    },
+    jQueryDetection: function jQueryDetection() {
+      if (typeof $ === 'undefined') {
+        throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.');
+      }
+
+      var version = $.fn.jquery.split(' ')[0].split('.');
+      var minMajor = 1;
+      var ltMajor = 2;
+      var minMinor = 9;
+      var minPatch = 1;
+      var maxMajor = 4;
+
+      if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
+        throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0');
+      }
+    }
+  };
+  Util.jQueryDetection();
+  setTransitionEndSupport();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+
+  var NAME = 'alert';
+  var VERSION = '4.4.1';
+  var DATA_KEY = 'bs.alert';
+  var EVENT_KEY = "." + DATA_KEY;
+  var DATA_API_KEY = '.data-api';
+  var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var Selector = {
+    DISMISS: '[data-dismiss="alert"]'
+  };
+  var Event = {
+    CLOSE: "close" + EVENT_KEY,
+    CLOSED: "closed" + EVENT_KEY,
+    CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
+  };
+  var ClassName = {
+    ALERT: 'alert',
+    FADE: 'fade',
+    SHOW: 'show'
+  };
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
+  var Alert =
+  /*#__PURE__*/
+  function () {
+    function Alert(element) {
+      this._element = element;
+    } // Getters
+
+
+    var _proto = Alert.prototype;
+
+    // Public
+    _proto.close = function close(element) {
+      var rootElement = this._element;
+
+      if (element) {
+        rootElement = this._getRootElement(element);
+      }
+
+      var customEvent = this._triggerCloseEvent(rootElement);
+
+      if (customEvent.isDefaultPrevented()) {
+        return;
+      }
+
+      this._removeElement(rootElement);
+    };
+
+    _proto.dispose = function dispose() {
+      $.removeData(this._element, DATA_KEY);
+      this._element = null;
+    } // Private
+    ;
+
+    _proto._getRootElement = function _getRootElement(element) {
+      var selector = Util.getSelectorFromElement(element);
+      var parent = false;
+
+      if (selector) {
+        parent = document.querySelector(selector);
+      }
+
+      if (!parent) {
+        parent = $(element).closest("." + ClassName.ALERT)[0];
+      }
+
+      return parent;
+    };
+
+    _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
+      var closeEvent = $.Event(Event.CLOSE);
+      $(element).trigger(closeEvent);
+      return closeEvent;
+    };
+
+    _proto._removeElement = function _removeElement(element) {
+      var _this = this;
+
+      $(element).removeClass(ClassName.SHOW);
+
+      if (!$(element).hasClass(ClassName.FADE)) {
+        this._destroyElement(element);
+
+        return;
+      }
+=======
+
+      if (this.perfil.clave === this.perfil.clave_confirm) {
+        this.modoEditar = false;
+        this.$Progress.start();
+        this.perfil.put('/profiles').then(function () {
+          _this.$Progress.finish();
+        })["catch"](function () {
+          _this.$Progress.fail();
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Actualizado correctamente'
+        });
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: "Ups...",
+          text: "Las claves introducidas no coinciden"
+        });
+      }
+    },
+    updateImg: function updateImg(e) {
+      var _this2 = this;
+
+      var file = e.target.files[0];
+      console.log(file);
+      var reader = new FileReader();
+
+      if (file['size'] < 2111775) {
+        reader.onloadend = function (file) {
+          // console.log('RESULTADO', reader.result)
+          _this2.perfil.photo = reader.result;
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: "Ups...",
+          text: "El archivo excede el límite de peso (2mb)"
+        });
+      }
+    },
+    numberWithCommas: function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+  },
+  created: function created() {
+    var _this3 = this;
+
+    axios.get('profiles').then(function (response) {
+      _this3.perfil.id = response.data.id;
+      _this3.perfil.name = response.data.name;
+      _this3.perfil.email = response.data.email;
+      _this3.perfil.city = response.data.city;
+      _this3.perfil.state = response.data.state;
+      _this3.perfil.ci = response.data.ci;
+      _this3.perfil.birth = response.data.birth;
+      _this3.perfil.photo = response.data.photo;
+    })["catch"](function (e) {
+      console.log(e);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Users.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Users.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      users: [],
+      user: new Form({
+        id: '',
+        name: '',
+        ci: '',
+        active: ''
+      }),
+      ci: '',
+      pagination: {
+        'total': 0,
+        'current_page': 1,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0
+      },
+      offset: 2
+    };
+  },
+  computed: {
+    isActived: function isActived() {
+      return this.pagination.current_page;
+    },
+    pagesNumber: function pagesNumber() {
+      if (!this.pagination.to) {
+        return [];
+      }
+
+      var from = this.pagination.current_page - this.offset;
+
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
+
+      var pagesArray = [];
+
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+
+      return pagesArray;
+    },
+    searchUsers: function searchUsers() {
+      var _this = this;
+
+      return this.users.filter(function (item) {
+        return item.ci.includes(_this.ci);
+      });
+    }
+  },
+  methods: {
+    loadUsers: function loadUsers(page) {
+      var _this2 = this;
+
+      // axios.get("/users").then(({ data }) => this.users = data.data);
+      axios.get('api/user?page=' + page).then(function (response) {
+        _this2.users = response.data.usuarios.data, _this2.pagination = response.data.pagination;
+      });
+    },
+    deleteUser: function deleteUser(id) {
+      var _this3 = this;
+
+      Swal.fire({
+        title: '¿Seguro que desea eliminarlo?',
+        text: "Esta acción no podrá ser revertida",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Borrar'
+      }).then(function (result) {
+        if (result.value) {
+          _this3.user["delete"]('api/user/' + id).then(function () {
+            Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success');
+            Fire.$emit('AfterCreate');
+          })["catch"](function () {
+            Swal.fire('Error', 'Algo ha salido mal...', 'warning');
+          });
+        }
+      });
+    },
+    updateEstadoActivo: function updateEstadoActivo(estado, id) {
+      this.user.active = !estado;
+      this.user.put('api/user/' + id).then(function () {
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        Swal.fire('Error', 'Algo ha salido mal...', 'warning');
+      });
+    },
+    numberWithCommas: function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+    changePage: function changePage(page) {
+      this.pagination.current_page = page;
+      this.loadUsers(page);
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    var page = this.pagination.current_page;
+    this.loadUsers(page);
+    Fire.$on('AfterCreate', function () {
+      _this4.loadUsers(page);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
 
 /*!
   * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -43252,7 +44008,11 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
+<<<<<<< HEAD
                     _vm._l(_vm.searchVentas, function(item) {
+=======
+                    _vm._l(_vm.searchVentas, function(item, index) {
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                       return _c(
                         "tr",
                         {
@@ -43265,7 +44025,11 @@ var render = function() {
                             _vm._v(_vm._s(item.id))
                           ]),
                           _vm._v(" "),
+<<<<<<< HEAD
                           _c("td", [_vm._v(_vm._s(item.user_name) + " ")]),
+=======
+                          _c("td", [_vm._v(_vm._s(_vm.nombres[index]) + " ")]),
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(item.nombre))]),
                           _vm._v(" "),
@@ -43465,10 +44229,17 @@ var staticRenderFns = [
               "aria-controls": "example1",
               rowspan: "1",
               colspan: "1",
+<<<<<<< HEAD
               "aria-label": "Título: activate to sort column ascending"
             }
           },
           [_vm._v("Título")]
+=======
+              "aria-label": "Nombre: activate to sort column ascending"
+            }
+          },
+          [_vm._v("Nombre")]
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
         ),
         _vm._v(" "),
         _c(

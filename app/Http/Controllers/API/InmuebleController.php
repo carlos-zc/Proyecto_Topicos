@@ -63,7 +63,10 @@ class InmuebleController extends Controller
 
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $user = Auth::user();
+=======
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
         $venta = new Inmueble();
         $venta->nombre = $request->nombre;
         $venta->tipo = $request->tipo;
@@ -71,7 +74,10 @@ class InmuebleController extends Controller
         $venta->descripcion = $request->descripcion;
         $venta->municipio = $request->municipio;
         $venta->user_id = auth()->id();
+<<<<<<< HEAD
         $venta->user_name = $user->name;
+=======
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
 
         if($request->foto != null){
             // $image = explode(';', explode('/', $request->foto)[1])[0];

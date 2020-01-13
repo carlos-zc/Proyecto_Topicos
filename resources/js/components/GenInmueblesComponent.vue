@@ -54,16 +54,26 @@
               <tr role="row">
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Id: activate to sort column descending">ID</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Vendedor: activate to sort column ascending">Vendedor</th>
+<<<<<<< HEAD
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Título: activate to sort column ascending">Título</th>
+=======
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Nombre: activate to sort column ascending">Nombre</th>
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Ubicación: activate to sort column ascending">Ubicación</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Precio: activate to sort column ascending">Precio</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Foto: activate to sort column ascending">Foto</th>
               </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
               <tr role="row" class="odd" v-for="item in searchVentas" :key="item.id">
                 <td class="sorting_1">{{ item.id }}</td>
                 <td>{{ item.user_name }} </td>
+=======
+              <tr role="row" class="odd" v-for="(item, index) in searchVentas" :key="item.id">
+                <td class="sorting_1">{{ item.id }}</td>
+                <td>{{ nombres[index] }} </td>
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                 <td>{{ item.nombre }}</td>
                 <td>{{ item.municipio }}</td>
                 <td>{{ numberWithCommas(item.precio) + '.00 $'}}</td>
@@ -118,6 +128,10 @@
             return {
                 ventas: [],
                 ubicacion: '',
+<<<<<<< HEAD
+=======
+                nombres: new Array(3),
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                 pagination: {
                     'total': 0,
                     'current_page': 1,
@@ -168,6 +182,12 @@
                 axios.get('venta/create?page='+page).then(response => {
                     this.ventas = response.data.ventas.data,
                     this.pagination = response.data.pagination
+<<<<<<< HEAD
+=======
+                    for(var i = 0; i < this.ventas.length; i++){
+                      this.nombreVendedor(this.ventas[i].user_id, i);
+                    }
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
                 })
             },
 
@@ -175,6 +195,27 @@
                 return "img/inmueble/" + img;
             },
 
+<<<<<<< HEAD
+=======
+            nombreVendedor(id, index){
+              // try {
+              //   var nombre = await axios.get('venta/'+id);
+              //   console.log('listo '+nombre.data)
+              //   return nombre.data;
+              // }
+              // catch(e){
+              //   console.log(e)
+              // }
+              axios.get('venta/'+id).then(response => {
+                let nombre = response.data;
+                console.log(nombre);
+                this.nombres[index] = nombre;
+              }).catch(() => {
+                Swal.fire('Error','Algo ha salido mal...','warning');
+              })
+            },
+
+>>>>>>> 48efbcfd856c058c337daa441ba9b082619376f6
             changePage(page){
                 this.pagination.current_page = page;
                 this.loadVentas(page);
