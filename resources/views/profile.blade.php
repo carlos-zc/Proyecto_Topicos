@@ -4,5 +4,5 @@
 
 <div class="container">
     <profile-component></profile-component>
-</div>
+</div><!-- Termina perfil -->
 @endsection
