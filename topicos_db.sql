@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-01-2020 a las 18:21:01
+-- Tiempo de generación: 25-01-2020 a las 04:37:50
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -71,7 +71,9 @@ INSERT INTO `inmuebles` (`id`, `nombre`, `tipo`, `precio`, `descripcion`, `munic
 (7, 'Ganaderia', 'Quinta', 50000, NULL, 'Bejuma', 'ejemplo.png', 2, 'Peter Prueba', '2020-01-13 05:50:06', '2020-01-13 05:50:06'),
 (8, 'Chozita', 'Casa', 33000, NULL, 'Naguanagua', '1578894724.jpeg', 1, 'Carlos Zapata', '2020-01-13 05:52:04', '2020-01-13 05:52:04'),
 (9, 'Sendo Pent-House 7 pisos', 'Apartamento', 180000, NULL, 'Valencia', '1578894828.jpeg', 1, 'Carlos Zapata', '2020-01-13 05:53:49', '2020-01-13 05:53:49'),
-(10, 'Casa sin baño', 'Casa', 82, NULL, 'San Joaquín', 'ejemplo.png', 1, 'Carlos Zapata', '2020-01-13 05:54:48', '2020-01-13 05:54:48');
+(10, 'Casa sin baño', 'Casa', 82, NULL, 'San Joaquín', 'ejemplo.png', 1, 'Carlos Zapata', '2020-01-13 05:54:48', '2020-01-13 05:54:48'),
+(11, 'Chalet Naguanagua', 'Quinta', 80000, NULL, 'Naguanagua', '1578943455.jpeg', 13, 'Victoria Cardozo', '2020-01-13 19:24:16', '2020-01-13 19:24:16'),
+(12, 'Pato house', 'Quinta', 10000, NULL, 'Carlos Arvelo', '1578949376.jpeg', 14, 'Willie Apfel', '2020-01-13 21:02:56', '2020-01-13 21:02:56');
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ci
 (9, 'Dameon Macejkovic', 'emoen@example.com', '2020-01-13 05:59:23', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '48070165', NULL, 0, 'user', 'perfil.png', '4UB8ee2bf6', '2020-01-13 05:59:24', '2020-01-13 05:59:24'),
 (10, 'Stephan Sawayn MD', 'legros.christ@example.com', '2020-01-13 05:59:23', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '19020201', NULL, 0, 'user', 'perfil.png', 'DlzYH0LFLq', '2020-01-13 05:59:24', '2020-01-13 05:59:24'),
 (11, 'Griffin Abernathy', 'chester53@example.org', '2020-01-13 05:59:23', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '1809378', NULL, 0, 'user', 'perfil.png', 'tm6DfVaSI8', '2020-01-13 05:59:24', '2020-01-13 05:59:24'),
-(12, 'Toby Gislason', 'lourdes.hickle@example.com', '2020-01-13 05:59:23', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '42546117', NULL, 0, 'user', 'perfil.png', 'Hw8qIrRjYN', '2020-01-13 05:59:24', '2020-01-13 05:59:24');
+(12, 'Toby Gislason', 'lourdes.hickle@example.com', '2020-01-13 05:59:23', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '42546117', NULL, 0, 'user', 'perfil.png', 'Hw8qIrRjYN', '2020-01-13 05:59:24', '2020-01-13 05:59:24'),
+(13, 'Victoria Cardozo', 'victoriacardozo@hotmail.com', NULL, '$2y$10$GSvLRSMVsuhnA6AE.gDChORjPoZMf1hsh60uQnGp0uUGgj9F583FC', 'Valencia', 'Carabobo', '7760685', '1963-07-07', 1, 'user', '1578943244.png', NULL, '2020-01-13 19:18:33', '2020-01-13 19:21:11'),
+(14, 'Willie Apfel', 'williemrk@pato.com', NULL, '$2y$10$wT8J2TS6CJgrcU.gZ7peXukHUtYEvbjs05h2Y0CMCAO.ssFau6PJm', 'Valenci0', 'Carabobo', '27877535', '2020-01-01', 1, 'user', '1578949234.png', NULL, '2020-01-13 20:59:52', '2020-01-20 20:54:03'),
+(15, 'Paula Riveros', 'paulacamila1234@gmail.com', NULL, '$2y$10$83kxEZCZdA4hzwf2XWZttOryAYA12xYsiWmBHUrp9CDMtDrL./4vm', 'Valencia', 'Carabobo', '27186223', '2000-01-05', 0, 'user', '1579229096.png', NULL, '2020-01-17 02:43:17', '2020-01-17 02:44:59');
 
 --
 -- Índices para tablas volcadas
@@ -199,7 +204,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -211,7 +216,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
