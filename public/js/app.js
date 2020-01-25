@@ -1923,9 +1923,6 @@ __webpack_require__.r(__webpack_exports__);
       });*/
     }
   },
-  mounted: function mounted() {
-    this.renderChart();
-  },
   created: function created() {
     var _this = this;
 
@@ -1941,6 +1938,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.cantidad.push(array[i].cantidad_mun); //cantidad[i]=this.respuesta[i].cantidad_num;
 
       }
+
+      _this.renderChart();
     });
   }
 });

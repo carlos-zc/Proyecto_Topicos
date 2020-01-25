@@ -106,9 +106,6 @@
             });*/
             }
         },
-        mounted() {
-            this.renderChart();
-        },
         created(){
             axios.get('venta-grafico').then(response =>{
                 
@@ -120,6 +117,8 @@
                     this.cantidad.push(array[i].cantidad_mun);
                     //cantidad[i]=this.respuesta[i].cantidad_num;
                 }
+
+                this.renderChart();
 
 
             });
