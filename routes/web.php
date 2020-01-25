@@ -34,3 +34,5 @@ Route::Resources(['venta' => 'API\InmuebleController']);
 
 Route::get('/inmuebles-charts', 'API\InmuebleController@viewCharts')->name('inmuebles-charts');
 
+Route::get('/venta-grafico', 'API\InmuebleController@graficoMunicipios')->name('venta-grafico');
+

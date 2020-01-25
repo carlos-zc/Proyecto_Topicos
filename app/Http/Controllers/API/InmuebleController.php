@@ -146,6 +146,13 @@ class InmuebleController extends Controller
         return view('inmuebles/charts');
     }
 
+    public function graficoMunicipios()
+    {
+
+        //return $grafico = Inmueble::table('inmuebles')->select('municipio', 'count(id) as cantidad_municipio')->groupBy('municipio')->get();
+        return $grafico = \DB::select("SELECT `municipio`, COUNT(id) AS 'cantidad_mun' FROM `inmuebles` GROUP BY `municipio` ORDER BY `cantidad_mun` DESC");
+
+    }
 }
 
 
