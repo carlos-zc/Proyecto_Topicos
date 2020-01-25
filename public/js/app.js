@@ -1880,7 +1880,9 @@ __webpack_require__.r(__webpack_exports__);
           datasets: [{
             label: 'Inmuebles en Venta',
             data: this.cantidad,
-            backgroundColor: ['rgba(0, 55, 89, 0.5)', 'rgba(54, 66, 118, 0.5)', 'rgba(108, 72, 136, 0.5)', 'rgba(163, 72, 138, 0.5)', 'rgba(212, 75, 124, 0.5)', 'rgba(246, 91, 98, 0.5)', 'rgba(255, 124, 63, 0.5)', 'rgba(255, 166, 0, 0.5)', 'rgba(255, 219, 15, 0.5)'],
+            backgroundColor: ['rgba(0, 55, 89, 0.5)', //Azul
+            'rgba(54, 66, 118, 0.5)', //Morado Oscuro
+            'rgba(108, 72, 136, 0.5)', 'rgba(163, 72, 138, 0.5)', 'rgba(212, 75, 124, 0.5)', 'rgba(246, 91, 98, 0.5)', 'rgba(255, 124, 63, 0.5)', 'rgba(255, 166, 0, 0.5)', 'rgba(255, 219, 15, 0.5)'],
             borderColor: ['rgba(0, 55, 89, 1)', 'rgba(54, 66, 118, 1)', 'rgba(108, 72, 136, 1)', 'rgba(163, 72, 138, 1)', 'rgba(212, 75, 124, 1)', 'rgba(246, 91, 98, 1)', 'rgba(255, 124, 63, 1)', 'rgba(255, 166, 0, 1)', 'rgba(255, 219, 15, 1)'],
             borderWidth: 1
           }]

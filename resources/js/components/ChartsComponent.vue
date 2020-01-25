@@ -42,9 +42,9 @@
                             label:'Inmuebles en Venta',
                             data:this.cantidad,
                             backgroundColor: [
-                            'rgba(0, 55, 89, 0.5)',
-                            'rgba(54, 66, 118, 0.5)',
-                            'rgba(108, 72, 136, 0.5)',
+                            'rgba(0, 55, 89, 0.5)', //Azul
+                            'rgba(54, 66, 118, 0.5)', //Morado Oscuro
+                            'rgba(108, 72, 136, 0.5)', 
                             'rgba(163, 72, 138, 0.5)',
                             'rgba(212, 75, 124, 0.5)',
                             'rgba(246, 91, 98, 0.5)',
