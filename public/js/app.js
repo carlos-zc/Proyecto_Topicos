@@ -1847,6 +1847,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1861,7 +1871,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     renderChart: function renderChart() {
-      var ctx = document.getElementById("myChart").getContext("2d");
+      var ctx = document.getElementById("munChart").getContext("2d");
       var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx, {
         type: "bar",
         data: {
@@ -1870,8 +1880,8 @@ __webpack_require__.r(__webpack_exports__);
           datasets: [{
             label: 'Inmuebles en Venta',
             data: this.cantidad,
-            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(153, 102, 255, 1)'],
+            backgroundColor: ['rgba(0, 55, 89, 0.5)', 'rgba(54, 66, 118, 0.5)', 'rgba(108, 72, 136, 0.5)', 'rgba(163, 72, 138, 0.5)', 'rgba(212, 75, 124, 0.5)', 'rgba(246, 91, 98, 0.5)', 'rgba(255, 124, 63, 0.5)', 'rgba(255, 166, 0, 0.5)', 'rgba(255, 219, 15, 0.5)'],
+            borderColor: ['rgba(0, 55, 89, 1)', 'rgba(54, 66, 118, 1)', 'rgba(108, 72, 136, 1)', 'rgba(163, 72, 138, 1)', 'rgba(212, 75, 124, 1)', 'rgba(246, 91, 98, 1)', 'rgba(255, 124, 63, 1)', 'rgba(255, 166, 0, 1)', 'rgba(255, 219, 15, 1)'],
             borderWidth: 1
           }]
         },
@@ -77022,8 +77032,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { width: "50%" } }, [
-      _c("canvas", { attrs: { id: "myChart", width: "100", height: "100" } })
+    return _c("div", [
+      _c("div", { staticStyle: { width: "100%", height: "50%" } }, [
+        _c("canvas", { attrs: { id: "munChart", width: "200", height: "100" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { width: "45%", height: "45%" } }, [
+        _c("canvas", { attrs: { id: "myChart", width: "100", height: "100" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { width: "45%", height: "45%" } }, [
+        _c("canvas", { attrs: { id: "myChart", width: "100", height: "100" } })
+      ])
     ])
   }
 ]
