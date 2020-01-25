@@ -140,4 +140,12 @@ class InmuebleController extends Controller
 
         $venta->delete();
     }
+
+    public function viewCharts()
+    {
+        return view('inmuebles/charts');
+    }
+
 }
+
+

@@ -235,6 +235,13 @@
                                 </li>
     
                                 <li class="nav-item">
+                                    <a href="inmuebles-charts" class="{{ Request::path() === '/charts' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon far fa-chart-bar"></i>
+                                        <p>Estadísticas</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="nav-icon fas fa-power-off text-red"></i>

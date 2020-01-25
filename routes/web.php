@@ -17,7 +17,9 @@ Route::get('/profile', 'API\UserController@viewProfile')->name('profile');
 
 Route::get('/profiles', 'API\UserController@profile')->name('profiles');
 
-Route::put('/profiles', 'API\UserController@updatePerfil')->name('profiles');
+Route::put('/profiles', 'API\UserController@updatePerfil')->name('profiles');\
+
+
 
 // Route::get('/users', 'API\UserController@index')->name('users');
 
@@ -27,4 +29,8 @@ Route::get('/inmuebles-pers', 'API\InmuebleController@viewPersonal')->name('inmu
 Route::get('/inmuebles', 'API\InmuebleController@viewGeneral')->name('inmuebles');
 
 Route::Resources(['venta' => 'API\InmuebleController']);
+
 // Route::post('/inmueble', 'API\InmuebleController@store')->name('inmueble');
+
+Route::get('/inmuebles-charts', 'API\InmuebleController@viewCharts')->name('inmuebles-charts');
+
