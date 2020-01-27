@@ -36,3 +36,7 @@ Route::get('/inmuebles-charts', 'API\InmuebleController@viewCharts')->name('inmu
 
 Route::get('/venta-grafico', 'API\InmuebleController@graficoMunicipios')->name('venta-grafico');
 
+Route::get('/tipo-grafico', 'API\InmuebleController@graficoTipoInmuebles')->name('tipo-grafico');
+
+Route::get('/precio-grafico', 'API\InmuebleController@graficoPrecios')->name('precio-grafico');
+

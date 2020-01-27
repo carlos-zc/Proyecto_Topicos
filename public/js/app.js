@@ -1857,12 +1857,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       municipios: [],
-      cantidad: []
+      cantidad: [],
+      tipo_inmueble: [],
+      cant_tipo: [],
+      nombre_public: [],
+      precio_public: []
     };
   },
   props: {
@@ -1870,9 +1875,9 @@ __webpack_require__.r(__webpack_exports__);
     dataProp: String
   },
   methods: {
-    renderChart: function renderChart() {
-      var ctx = document.getElementById("munChart").getContext("2d");
-      var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx, {
+    rendermunChart: function rendermunChart() {
+      var munChart = document.getElementById("munChart").getContext("2d");
+      var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(munChart, {
         type: "bar",
         data: {
           //labels:['Casa', 'Quinta', 'Townhouse', 'Apartamento'],
@@ -1894,45 +1899,65 @@ __webpack_require__.r(__webpack_exports__);
                 beginAtZero: true
               }
             }]
+          },
+          title: {
+            display: true,
+            text: 'Cantidad de Publicaciones por Municipio',
+            fontSize: 20
           }
         }
       });
-      /*new Chart(document.getElementById('myChart'), {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Purple', 'Orange'],
+    },
+    rendertipChart: function rendertipChart() {
+      var tipChart = document.getElementById("tipChart").getContext("2d");
+      var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(tipChart, {
+        type: "doughnut",
+        data: {
+          //labels:['Casa', 'Quinta', 'Townhouse', 'Apartamento'],
+          labels: this.tipo_inmueble,
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
+            label: 'Tipo de Inmueble mas Vendido',
+            data: this.cant_tipo,
+            backgroundColor: ['rgba(1, 0, 89, 0.5)', //Azul
+            'rgba(168, 0, 91, 0.5)', 'rgba(250, 96, 52, 0.5)', 'rgba(255, 166, 0, 0.5)'],
+            borderColor: ['rgba(1, 0, 89, 1)', 'rgba(168, 0, 91, 1)', 'rgba(250, 96, 52, 1)', 'rgba(255, 166, 0, 1)'],
+            borderWidth: 1
           }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  }
-              }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Cantidad de Publicaciones por Tipo de Inmueble',
+            fontSize: 15
           }
-      }
-      });*/
+        }
+      });
+    },
+    renderpriceChart: function renderpriceChart() {
+      var tipChart = document.getElementById("priceChart").getContext("2d");
+      var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(tipChart, {
+        type: "doughnut",
+        data: {
+          //labels:['Casa', 'Quinta', 'Townhouse', 'Apartamento'],
+          labels: this.nombre_public,
+          datasets: [{
+            label: 'Tipo de Inmueble mas Vendido',
+            data: this.precio_public,
+            backgroundColor: ['rgba(1, 0, 89, 0.5)', //Azul
+            'rgba(104, 0, 96, 0.5)', 'rgba(170, 0, 88, 0.5)', 'rgba(218, 34, 70, 0.5)', 'rgba(247, 103, 44, 0.5)', 'rgba(255, 166, 0, 0.5)'],
+            borderColor: ['rgba(1, 0, 89, 1)', //Azul
+            'rgba(104, 0, 96, 1)', 'rgba(170, 0, 88, 1)', 'rgba(218, 34, 70, 1)', 'rgba(247, 103, 44, 1)', 'rgba(255, 166, 0, 1)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Propiedades de Mayor Valor',
+            fontSize: 15
+          }
+        }
+      });
     }
   },
   created: function created() {
@@ -1942,16 +1967,42 @@ __webpack_require__.r(__webpack_exports__);
       var array = response.data;
 
       for (var i = 0; i < array.length; i++) {
-        console.log('tu mama me mama');
         console.log(array[i].cantidad_mun);
 
         _this.municipios.push(array[i].municipio);
 
-        _this.cantidad.push(array[i].cantidad_mun); //cantidad[i]=this.respuesta[i].cantidad_num;
-
+        _this.cantidad.push(array[i].cantidad_mun);
       }
 
-      _this.renderChart();
+      _this.rendermunChart();
+    });
+    axios.get('tipo-grafico').then(function (response) {
+      var array = response.data;
+
+      for (var i = 0; i < array.length; i++) {
+        console.log(array[i].cantidad_tipo);
+        console.log(array[i].tipo);
+
+        _this.tipo_inmueble.push(array[i].tipo);
+
+        _this.cant_tipo.push(array[i].cantidad_tipo);
+      }
+
+      _this.rendertipChart();
+    });
+    axios.get('precio-grafico').then(function (response) {
+      var array = response.data;
+
+      for (var i = 0; i < array.length; i++) {
+        console.log(array[i].cantidad_tipo);
+        console.log(array[i].tipo);
+
+        _this.nombre_public.push(array[i].nombre);
+
+        _this.precio_public.push(array[i].precio);
+      }
+
+      _this.renderpriceChart();
     });
   }
 });
@@ -77039,12 +77090,23 @@ var staticRenderFns = [
         _c("canvas", { attrs: { id: "munChart", width: "200", height: "100" } })
       ]),
       _vm._v(" "),
-      _c("div", { staticStyle: { width: "45%", height: "45%" } }, [
-        _c("canvas", { attrs: { id: "myChart", width: "100", height: "100" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticStyle: { width: "45%", height: "45%" } }, [
-        _c("canvas", { attrs: { id: "myChart", width: "100", height: "100" } })
+      _c("div", { staticClass: "row", staticStyle: { "margin-top": "7%" } }, [
+        _c("div", { staticClass: "col-md", staticStyle: { height: "40%" } }, [
+          _c("canvas", {
+            attrs: {
+              id: "tipChart",
+              align: "center",
+              width: "50",
+              height: "50"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md", staticStyle: { height: "40%" } }, [
+          _c("canvas", {
+            attrs: { id: "priceChart", width: "50", height: "50" }
+          })
+        ])
       ])
     ])
   }
