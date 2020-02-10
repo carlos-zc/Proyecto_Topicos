@@ -77916,6 +77916,7 @@ var render = function() {
                               "is-invalid": _vm.venta.errors.has("nombre")
                             },
                             attrs: {
+                              required: "",
                               type: "text",
                               name: "nombre",
                               placeholder: "Nombre del inmueble"
@@ -77972,7 +77973,7 @@ var render = function() {
                               class: {
                                 "is-invalid": _vm.venta.errors.has("tipo")
                               },
-                              attrs: { name: "tipo" },
+                              attrs: { required: "", name: "tipo" },
                               on: {
                                 change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
@@ -78048,7 +78049,7 @@ var render = function() {
                               class: {
                                 "is-invalid": _vm.venta.errors.has("municipio")
                               },
-                              attrs: { name: "municipio" },
+                              attrs: { required: "", name: "municipio" },
                               on: {
                                 change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
@@ -78143,8 +78144,10 @@ var render = function() {
                               "is-invalid": _vm.venta.errors.has("precio")
                             },
                             attrs: {
+                              required: "",
                               type: "number",
                               name: "precio",
+                              min: "1",
                               placeholder: "Precio en $"
                             },
                             domProps: { value: _vm.venta.precio },
@@ -78688,8 +78691,8 @@ var render = function() {
                         attrs: {
                           type: "number",
                           name: "ci",
-                          min: "10000000",
-                          maxlength: "90000000",
+                          min: "1000000",
+                          max: "99999999",
                           required: ""
                         },
                         domProps: { value: _vm.perfil.ci },
@@ -92069,8 +92072,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\KaBet\Documents\GitHub\Proyecto_Topicos\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\KaBet\Documents\GitHub\Proyecto_Topicos\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Willo\Desktop\Git\Proyecto_Topicos\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Willo\Desktop\Git\Proyecto_Topicos\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

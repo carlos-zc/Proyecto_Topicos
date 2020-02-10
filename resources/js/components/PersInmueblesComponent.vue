@@ -133,7 +133,7 @@
                 <div class="form-group row">
                     <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre del inmueble" v-model="venta.nombre"
+                        <input required type="text" class="form-control" name="nombre" placeholder="Nombre del inmueble" v-model="venta.nombre"
                         :class="{ 'is-invalid': venta.errors.has('nombre') }">
                         <has-error :form="venta" field="nombre"></has-error>
                     </div>
@@ -142,7 +142,7 @@
                 <div class="form-group row">
                     <label for="tipo" class="col-sm-3 col-form-label">Tipo</label>
                     <div class="col-sm-9">
-                        <select class="form-control" name="tipo" v-model="venta.tipo"
+                        <select required class="form-control" name="tipo" v-model="venta.tipo"
                         :class="{ 'is-invalid': venta.errors.has('tipo') }">
                             <option disabled value="">Seleccionar una opción...</option>
                             <option>Casa</option>
@@ -157,7 +157,7 @@
                 <div class="form-group row">
                     <label for="municipio" class="col-sm-3 col-form-label">Municipio</label>
                     <div class="col-sm-9">
-                        <select class="form-control" name="municipio" v-model="venta.municipio"
+                        <select required class="form-control" name="municipio" v-model="venta.municipio"
                         :class="{ 'is-invalid': venta.errors.has('municipio') }">
                             <option disabled value="">Seleccionar una opción...</option>
                             <option>Bejuma</option>
@@ -182,7 +182,7 @@
                 <div class="form-group row">
                     <label for="precio" class="col-sm-3 col-form-label">Precio ($)</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" name="precio" placeholder="Precio en $" v-model="venta.precio"
+                        <input required type="number" class="form-control" name="precio" min="1" placeholder="Precio en $" v-model="venta.precio"
                         :class="{ 'is-invalid': venta.errors.has('precio') }">
                         <has-error :form="venta" field="precio"></has-error>
                     </div>

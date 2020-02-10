@@ -66,7 +66,7 @@
 
                         <div class="form-group">
                             <label for="ci">Cédula de Identidad:</label>
-                            <input type="number" class="form-control" name="ci" min="10000000" maxlength="90000000" required v-model="perfil.ci"
+                            <input type="number" class="form-control" name="ci" min="1000000" max="99999999" required v-model="perfil.ci"
                             :class="{ 'is-invalid': perfil.errors.has('ci') }">
                             <has-error :form="perfil" field="ci"></has-error>
                         </div>

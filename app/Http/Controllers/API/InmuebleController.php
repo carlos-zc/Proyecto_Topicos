@@ -149,17 +149,17 @@ class InmuebleController extends Controller
     public function graficoMunicipios()
     {
         //return $grafico = Inmueble::table('inmuebles')->select('municipio', 'count(id) as cantidad_municipio')->groupBy('municipio')->get();
-        return $grafico = \DB::select("SELECT `municipio`, COUNT(id) AS 'cantidad_mun' FROM `inmuebles` GROUP BY `municipio` ORDER BY `cantidad_mun` DESC");
+        return \DB::select("SELECT `municipio`, COUNT(id) AS 'cantidad_mun' FROM `inmuebles` GROUP BY `municipio` ORDER BY `cantidad_mun` DESC");
     }
 
     public function graficoTipoInmuebles()
     {
-        return $grafico = \DB::select("SELECT `tipo`, COUNT(id) AS 'cantidad_tipo' FROM `inmuebles` GROUP BY `tipo` ORDER BY `cantidad_tipo` DESC LIMIT 0,6");
+        return \DB::select("SELECT `tipo`, COUNT(id) AS 'cantidad_tipo' FROM `inmuebles` GROUP BY `tipo` ORDER BY `cantidad_tipo` DESC LIMIT 0,6");
     }
     
     public function graficoPrecios()
     {
-        return $grafico = \DB::select("SELECT `nombre`, `precio` FROM `inmuebles` ORDER BY `inmuebles`.`precio` DESC LIMIT 0,6");
+        return \DB::select("SELECT `nombre`, `precio` FROM `inmuebles` ORDER BY `inmuebles`.`precio` DESC LIMIT 0,6");
     }
     
 }
