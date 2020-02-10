@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }} y Apellido</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -43,7 +43,7 @@
                             <label for="ci" class="col-md-4 col-form-label text-md-right">CI</label>
 
                             <div class="col-md-6">
-                                <input id="ci" type="text" class="form-control @error('ci') is-invalid @enderror" name="ci" minlength="7" maxlength="8" value="{{ old('ci') }}" required autocomplete="ci">
+                                <input id="ci" type="number" class="form-control @error('ci') is-invalid @enderror" name="ci" value="{{ old('ci') }}" required autocomplete="ci">
 
                                 @error('ci')
                                     <span class="invalid-feedback" role="alert">

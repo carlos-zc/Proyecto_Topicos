@@ -78686,10 +78686,10 @@ var render = function() {
                         staticClass: "form-control",
                         class: { "is-invalid": _vm.perfil.errors.has("ci") },
                         attrs: {
-                          type: "text",
+                          type: "number",
                           name: "ci",
-                          minlength: "7",
-                          maxlength: "8",
+                          min: "10000000",
+                          maxlength: "90000000",
                           required: ""
                         },
                         domProps: { value: _vm.perfil.ci },
@@ -92069,8 +92069,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Willo\Desktop\Git\Proyecto_Topicos\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Willo\Desktop\Git\Proyecto_Topicos\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\KaBet\Documents\GitHub\Proyecto_Topicos\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\KaBet\Documents\GitHub\Proyecto_Topicos\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
